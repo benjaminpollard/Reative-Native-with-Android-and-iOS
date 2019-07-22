@@ -2,7 +2,7 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
-
+import settingsPage from './settingsPage';
 import React, { Component } from 'react';
 
 import {
@@ -14,6 +14,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback,
   View
 } from 'react-native';
 
@@ -50,60 +51,41 @@ export default class ActivityDemoComponent extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native ({this.props.buildType})!
-        </Text>
-        <Text style={styles.instructions}>
-          <Text>To get started, edit </Text>
-          <Text style={styles.bold}>index.android.js</Text>
-          <Text>.</Text>
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-        {
-          Platform.select({
-            android: (
-              <TextInput
-                style={styles.textInput}
-                value={this.state.text}
-                onChangeText={(text) => this.setState({text})}
-              />)
-          })
-        }
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={() => activityStarter.navigateToExample()}
-            title='Start example activity'
-          />
-          <Button
-            onPress={() => activityStarter.dialNumber('+1 (234) 567-8910')}
-            title='Dial +1 (234) 567-8910'
-          />
-          <Button
-            onPress={() => activityStarter.getActivityName((name) => { alert(name); })}
-            title='Get activity name'
-          />
-          <Button
-            onPress={async () => {
-              try {
-                var name = await activityStarter.getActivityNameAsPromise();
-                alert(name);
-              } catch (e) {
-                alert("Error: " + e.message);
-              }
-            }}
-            title='Get activity name as promise'
-          />
-          <Button
-            onPress={() => NativeModules.Clipboard.setString("Copied to clipboard from JavaScript!")}
-            title='Copy to clipboard'
-          />
-          <Button
-            onPress={() => activityStarter.callJavaScript()}
-            title='Call JavaScript from Java'
-          />
+        <View style={{flex: 1, flexDirection: 'column' , backgroundColor: 'steelblue'}}>
+        <TouchableNativeFeedback
+           onPress={ function() {activityStarter.navigateToDashboard().bind()} }
+           background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
+         <View style={{ backgroundColor: 'steelblue'}}>
+           <Text>SHOWCASE</Text>
+         </View>
+       </TouchableNativeFeedback>
+        </View>
+        <View style={{flex: 1, flexDirection: 'column' , backgroundColor: 'powderblue' }}>
+        <TouchableNativeFeedback
+           onPress={  function() {activityStarter.navigateToDashboard().bind()}}
+           background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
+         <View style={{ backgroundColor: 'powderblue'}}>
+           <Text>SHOWCASE</Text>
+         </View>
+       </TouchableNativeFeedback>
+        </View>
+        <View style={{flex: 1, flexDirection: 'column' , backgroundColor: 'skyblue'}}>
+        <TouchableNativeFeedback
+           onPress={function() {activityStarter.navigateToDashboard().bind()}}
+           background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
+         <View style={{ backgroundColor: 'skyblue'}}>
+           <Text>SHOWCASE</Text>
+         </View>
+       </TouchableNativeFeedback>
+        </View>
+        <View style={{flex: 1, flexDirection: 'column' , backgroundColor: 'steelblue'}}>
+        <TouchableNativeFeedback
+           onPress={function() {activityStarter.navigateToDashboard().bind()}}
+           background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
+         <View style={{ backgroundColor: 'steelblue'}}>
+           <Text>SHOWCASE</Text>
+         </View>
+       </TouchableNativeFeedback>
         </View>
       </View>
     );
@@ -148,6 +130,7 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('ActivityDemoComponent', () => ActivityDemoComponent);
+AppRegistry.registerComponent('ActivityDemoComponent2', () => settingsPage);
 
 const eventEmitter = new NativeEventEmitter(eventEmitterModule);
 eventEmitter.addListener(eventEmitterModule.MyEventName, (params) => {

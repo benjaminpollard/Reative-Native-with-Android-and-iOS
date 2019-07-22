@@ -35,10 +35,19 @@ final class ActivityStarterModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    void navigateToDashboard() {
+        Activity activity = getCurrentActivity();
+        if (activity != null) {
+            Intent intent = new Intent(activity, SignUpActivity.class);
+            activity.startActivity(intent);
+        }
+    }
+
+    @ReactMethod
     void navigateToExample() {
         Activity activity = getCurrentActivity();
         if (activity != null) {
-            Intent intent = new Intent(activity, ExampleActivity.class);
+            Intent intent = new Intent(activity, SignUpActivity.class);
             activity.startActivity(intent);
         }
     }
