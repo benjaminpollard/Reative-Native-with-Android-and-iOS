@@ -1,4 +1,4 @@
-package com.demo.activity;
+package com.demo.activity.ReactModules;
 
 import android.support.annotation.NonNull;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * Exposes {@link ActivityStarterModule} and {@link EventEmitterModule}  to JavaScript.
  * One {@link ReactPackage} can expose any number of {@link NativeModule}s.
  */
-final class ActivityStarterReactPackage implements ReactPackage {
+final public class ActivityStarterReactPackage implements ReactPackage {
 
     @NonNull
     @Override

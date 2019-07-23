@@ -1,10 +1,13 @@
-package com.demo.activity;
+package com.demo.activity.ReactModules;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+import com.demo.activity.MainApplication;
+import com.demo.activity.RecipeListActivity;
+import com.demo.activity.SignUpActivity;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.bridge.Callback;
@@ -19,7 +22,7 @@ import com.facebook.react.bridge.WritableNativeArray;
 /**
  * Expose Java to JavaScript. Methods annotated with {@link ReactMethod} are exposed.
  */
-final class ActivityStarterModule extends ReactContextBaseJavaModule {
+final public class ActivityStarterModule extends ReactContextBaseJavaModule {
 
     ActivityStarterModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -38,7 +41,7 @@ final class ActivityStarterModule extends ReactContextBaseJavaModule {
     void navigateToDashboard() {
         Activity activity = getCurrentActivity();
         if (activity != null) {
-            Intent intent = new Intent(activity, SignUpActivity.class);
+            Intent intent = new Intent(activity, RecipeListActivity.class);
             activity.startActivity(intent);
         }
     }
@@ -47,7 +50,7 @@ final class ActivityStarterModule extends ReactContextBaseJavaModule {
     void navigateToExample() {
         Activity activity = getCurrentActivity();
         if (activity != null) {
-            Intent intent = new Intent(activity, SignUpActivity.class);
+            Intent intent = new Intent(activity, RecipeListActivity.class);
             activity.startActivity(intent);
         }
     }

@@ -1,4 +1,4 @@
-package com.demo.activity;
+package com.demo.activity.ReactModules;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Supports sending events to JavaScript.
  */
-final class EventEmitterModule extends ReactContextBaseJavaModule {
+final public class EventEmitterModule extends ReactContextBaseJavaModule {
 
     private static DeviceEventManagerModule.RCTDeviceEventEmitter eventEmitter = null;
 

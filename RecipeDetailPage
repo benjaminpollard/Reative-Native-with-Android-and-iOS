@@ -1,0 +1,86 @@
+import React, { Component } from 'react';
+
+import {
+  AppRegistry,
+  Button,
+  NativeEventEmitter,
+  NativeModules,
+  Platform,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
+
+import BatchedBridge from "react-native/Libraries/BatchedBridge/BatchedBridge";
+
+export default class RecipeDetailPage extends Component {
+   const dimensions = Dimensions.get('window')
+   const imageWidth = dimensions.width;
+   const imageHeight = Math.round(dimensions.width * 9 / 16)
+
+  constructor(props) {
+    super(props);
+     this.state = {};
+  }
+  componentDidMount() {
+     fetch(`https://www.food2fork.com/api/get?key=5e3af3fd8175a49108c8227793ab0044&rId=` + his.props.key1)
+       .then(res => res.json())
+       .then(json => this.setState({ data: json }));
+   }
+
+  render() {
+    return (
+      if (this.state.data) {
+        {this.state.data.map(el => (
+          <ScrollView>
+          <Image source={{uri: el.image_url , width: imageWidth, height: imageHeight}}> </Image>
+         <Text style={{fontSize:14}}>el.ingredients.toString()</Text>
+
+          </ScrollView>
+          ))}
+
+   } else {
+     // initial render
+    }
+
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  bold: {
+    fontWeight: "bold",
+  },
+  buttonContainer: {
+    height: 300,
+    width: "80%",
+    justifyContent: 'space-between',
+    marginTop: 30,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#E5ECFF',
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+  textInput: {
+    backgroundColor: 'white',
+    borderColor: 'gray',
+    borderWidth: 1,
+    height: 40,
+    marginTop: 20,
+    textAlign: "center",
+    width: "80%",
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+});

@@ -3,6 +3,8 @@
  * https://github.com/facebook/react-native
  */
 import settingsPage from './settingsPage';
+//import RecipeDetailPage from './RecipeDetailPage';
+
 import React, { Component } from 'react';
 
 import {
@@ -14,8 +16,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback,
-  View
+  View,
 } from 'react-native';
 
 import BatchedBridge from "react-native/Libraries/BatchedBridge/BatchedBridge";
@@ -50,43 +51,12 @@ export default class ActivityDemoComponent extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={{flex: 1, flexDirection: 'column' , backgroundColor: 'steelblue'}}>
-        <TouchableNativeFeedback
-           onPress={ function() {activityStarter.navigateToDashboard().bind()} }
-           background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
-         <View style={{ backgroundColor: 'steelblue'}}>
-           <Text>SHOWCASE</Text>
-         </View>
-       </TouchableNativeFeedback>
-        </View>
-        <View style={{flex: 1, flexDirection: 'column' , backgroundColor: 'powderblue' }}>
-        <TouchableNativeFeedback
-           onPress={  function() {activityStarter.navigateToDashboard().bind()}}
-           background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
-         <View style={{ backgroundColor: 'powderblue'}}>
-           <Text>SHOWCASE</Text>
-         </View>
-       </TouchableNativeFeedback>
-        </View>
-        <View style={{flex: 1, flexDirection: 'column' , backgroundColor: 'skyblue'}}>
-        <TouchableNativeFeedback
-           onPress={function() {activityStarter.navigateToDashboard().bind()}}
-           background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
-         <View style={{ backgroundColor: 'skyblue'}}>
-           <Text>SHOWCASE</Text>
-         </View>
-       </TouchableNativeFeedback>
-        </View>
-        <View style={{flex: 1, flexDirection: 'column' , backgroundColor: 'steelblue'}}>
-        <TouchableNativeFeedback
-           onPress={function() {activityStarter.navigateToDashboard().bind()}}
-           background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
-         <View style={{ backgroundColor: 'steelblue'}}>
-           <Text>SHOWCASE</Text>
-         </View>
-       </TouchableNativeFeedback>
-        </View>
+      <View style={styles.container} >
+      <Button
+      onPress={() => activityStarter.navigateToExample()}
+      title="Learn More"
+      color="#841584"
+      accessibilityLabel="Learn more about this purple button" />
       </View>
     );
   }
@@ -131,6 +101,8 @@ const styles = StyleSheet.create({
 
 AppRegistry.registerComponent('ActivityDemoComponent', () => ActivityDemoComponent);
 AppRegistry.registerComponent('ActivityDemoComponent2', () => settingsPage);
+AppRegistry.registerComponent('RecipeDetailPage', () => RecipeDetailPage);
+
 
 const eventEmitter = new NativeEventEmitter(eventEmitterModule);
 eventEmitter.addListener(eventEmitterModule.MyEventName, (params) => {

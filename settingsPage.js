@@ -98,3 +98,5 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 });
+
+AppRegistry.registerComponent('ActivityDemoComponent2', () => settingsPage);

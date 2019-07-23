@@ -15,9 +15,19 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.devsupport.interfaces.DevOptionHandler;
 import com.facebook.react.devsupport.interfaces.DevSupportManager;
 
-public class dashboardActivity extends ReactActivity {
+public class RecipesDetailsActivity extends ReactActivity {
+    public static final String KEY = "key1";
+    private Bundle mInitialProps = null;
 
-    private static final String CUSTOM_DEV_OPTION_MESSAGE = "Hello from custom dev option!";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Bundle bundle = this.getIntent().getExtras();
+        if (bundle != null && bundle.containsKey(KEY)) {
+            mInitialProps = new Bundle();
+            mInitialProps.putString(KEY, bundle.getString(KEY));
+        }
+        super.onCreate(savedInstanceState);
+    }
 
     /**
      * Returns the name of the main component registered from JavaScript.
@@ -27,7 +37,7 @@ public class dashboardActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "ActivityDemoComponent";
+        return "RecipeDetailPage";
     }
 
     /**
@@ -40,23 +50,11 @@ public class dashboardActivity extends ReactActivity {
             protected Bundle getLaunchOptions() {
                 Bundle launchOptions = new Bundle();
                 launchOptions.putString("buildType", BuildConfig.BUILD_TYPE);
+                launchOptions.putString(KEY, getIntent().getStringExtra(KEY));
                 return launchOptions;
             }
         };
     }
 
-    /**
-     * Demonstrates how to add a custom option to the dev menu.
-     * https://stackoverflow.com/a/44882371/3968276
-     * This only works from the debug build with dev options enabled.
-     */
-    @Override
-    @CallSuper
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        MainApplication application = (MainApplication) getApplication();
-        ReactNativeHost reactNativeHost = application.getReactNativeHost();
-        ReactInstanceManager reactInstanceManager = reactNativeHost.getReactInstanceManager();
-        DevSupportManager devSupportManager = reactInstanceManager.getDevSupportManager();
-    }
+
 }

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 
+import com.demo.activity.ReactModules.ActivityStarterReactPackage;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
