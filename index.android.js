@@ -3,7 +3,7 @@
  * https://github.com/facebook/react-native
  */
 import settingsPage from './settingsPage';
-//import RecipeDetailPage from './RecipeDetailPage';
+import RecipeDetailPage from './RecipeDetailPage';
 
 import React, { Component } from 'react';
 
@@ -15,7 +15,9 @@ import {
   Platform,
   StyleSheet,
   Text,
+  Dimensions,
   TextInput,
+  TouchableHighlight,
   View,
 } from 'react-native';
 
@@ -52,11 +54,27 @@ export default class ActivityDemoComponent extends Component {
   render() {
     return (
       <View style={styles.container} >
-      <Button
-      onPress={() => activityStarter.navigateToExample()}
-      title="Learn More"
-      color="#841584"
-      accessibilityLabel="Learn more about this purple button" />
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'stretch',
+      }}>
+      <TouchableHighlight onPress={() => activityStarter.navigateToExample()} underlayColor="white" style={{width:Dimensions.get('window').width, height:"25%"}}>
+            <Text style={styles.button}>no</Text>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => activityStarter.navigateToExample()} underlayColor="white" style={{width:Dimensions.get('window').width, height:"25%"}}>
+            <Text style={styles.button}>no</Text>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => activityStarter.navigateToExample()} underlayColor="white" style={{width:Dimensions.get('window').width, height:"25%"}}>
+            <Text style={styles.button}>no</Text>
+      </TouchableHighlight>
+      <TouchableHighlight onPress={() => activityStarter.navigateToExample()} underlayColor="white" style={{width:Dimensions.get('window').width, height:"25%"}}>
+            <Text style={styles.button}>no</Text>
+      </TouchableHighlight>
+      </View>
+
+
       </View>
     );
   }
@@ -66,37 +84,24 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: "bold",
   },
-  buttonContainer: {
-    height: 300,
-    width: "80%",
-    justifyContent: 'space-between',
-    marginTop: 30,
+  x: {
+    width: "100%",
   },
+  button: {
+      width: "100%",
+      height:"100%",
+      alignItems: 'center',
+      backgroundColor: '#2196F3',
+      justifyContent: 'center'
+    },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#E5ECFF',
+    width: "100%",
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  textInput: {
-    backgroundColor: 'white',
-    borderColor: 'gray',
-    borderWidth: 1,
-    height: 40,
-    marginTop: 20,
-    textAlign: "center",
-    width: "80%",
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
+
 });
 
 AppRegistry.registerComponent('ActivityDemoComponent', () => ActivityDemoComponent);

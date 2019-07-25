@@ -22,7 +22,7 @@ public final class MainApplication extends Application implements ReactApplicati
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
         @Override
         public boolean getUseDeveloperSupport() {
-            return BuildConfig.USE_DEVELOPER_SUPPORT;
+            return BuildConfig.DEBUG;
         }
 
         @Override

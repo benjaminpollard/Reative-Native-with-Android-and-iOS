@@ -41,37 +41,11 @@ public final class MainActivity extends ReactActivity {
             @Override
             protected Bundle getLaunchOptions() {
                 Bundle launchOptions = new Bundle();
-                launchOptions.putString("buildType", BuildConfig.BUILD_TYPE);
+                launchOptions.putString("buildType", "Debug");
                 return launchOptions;
             }
         };
     }
 
-    /**
-     * Demonstrates how to add a custom option to the dev menu.
-     * https://stackoverflow.com/a/44882371/3968276
-     * This only works from the debug build with dev options enabled.
-     */
-    @Override
-    @CallSuper
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        MainApplication application = (MainApplication) getApplication();
-        ReactNativeHost reactNativeHost = application.getReactNativeHost();
-        ReactInstanceManager reactInstanceManager = reactNativeHost.getReactInstanceManager();
-        DevSupportManager devSupportManager = reactInstanceManager.getDevSupportManager();
-        devSupportManager.addCustomDevOption("Custom dev option", new DevOptionHandler() {
-            @Override
-            public void onOptionSelected() {
-                if (NotificationManagerCompat.from(MainActivity.this).areNotificationsEnabled()) {
-                    Toast.makeText(MainActivity.this, CUSTOM_DEV_OPTION_MESSAGE, Toast.LENGTH_LONG).show();
-                } else {
-                    AlertDialog dialog = new AlertDialog.Builder(MainActivity.this).create();
-                    dialog.setTitle("Dev option");
-                    dialog.setMessage(CUSTOM_DEV_OPTION_MESSAGE);
-                    dialog.show();
-                }
-            }
-        });
-    }
+
 }
