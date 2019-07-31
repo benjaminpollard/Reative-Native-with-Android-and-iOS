@@ -65,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="456.52173913043481" y="98.4375"/>
         </scene>
-        <!--View Controller-->
+        <!--Showcase View Controller-->
         <scene sceneID="C6S-6J-k7K">
             <objects>
-                <viewController id="G55-CN-FUk" sceneMemberID="viewController">
+                <viewController id="G55-CN-FUk" customClass="ShowcaseViewController" customModule="Activity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pst-Eq-9GZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

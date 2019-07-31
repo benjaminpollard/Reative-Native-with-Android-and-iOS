@@ -23,12 +23,12 @@
 //                                                              }];
 //    [self.reactBridge.devMenu addItem:devMenuItem];
 
-    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:self.reactBridge
-                                                     moduleName:@"ActivityDemoComponent"                                             initialProperties:nil];
-    rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
-
-    UIViewController *rootViewController = [UIViewController new];
-    rootViewController.view = rootView;
+//    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:self.reactBridge
+//                                                     moduleName:@"ActivityDemoComponent"                                             initialProperties:nil];
+//    rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+//
+//    UIViewController *rootViewController = [UIViewController new];
+//    rootViewController.view = rootView;
   // navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
 //
 //    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -40,8 +40,13 @@
 
 - (void) navigateToExampleView
 {
-    ExampleView *viewController = [[ExampleView alloc] initWithNibName:@"ExampleView" bundle:nil];
-    [navigationController pushViewController:viewController animated:YES];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"RecipeListStoryboard" bundle:nil];
+    UIViewController *myViewController = [storyboard instantiateViewControllerWithIdentifier:@"RecipeListViewController"];
+    //[myViewController loadCustomData:myCustomData];
+   // [self presentViewController:myViewController animated:YES completion:nil];
+//    ExampleView *viewController = [[ExampleView alloc] initWithNibName:@"ExampleView" bundle:nil];
+    [navigationController pushViewController:myViewController animated:YES];
 }
 
 - (void) navigateBack
