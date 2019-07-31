@@ -23,6 +23,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		C61C809B327406771FCEF379 /* Pods_Activity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35D98A1FBEE8E4CA6B2FC83 /* Pods_Activity.framework */; };
 		C6848C2822F04DA4000DA4B7 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6848C2722F04DA4000DA4B7 /* main.storyboard */; };
+		C6848C6F22F0B022000DA4B7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6848C6E22F0B022000DA4B7 /* MainViewController.swift */; };
 		E980106A224A7479004F93F3 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9801069224A7479004F93F3 /* JavaScriptCore.framework */; };
 		E9A14664224E2702001AB682 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A1465C224E2701001AB682 /* EventEmitter.m */; };
 		E9A14665224E2702001AB682 /* ExampleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A1465E224E2702001AB682 /* ExampleView.m */; };
@@ -302,6 +303,8 @@
 		AE229BF8CCC980EEE5F560FB /* Pods-Activity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Activity.release.xcconfig"; path = "Target Support Files/Pods-Activity/Pods-Activity.release.xcconfig"; sourceTree = "<group>"; };
 		B35D98A1FBEE8E4CA6B2FC83 /* Pods_Activity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Activity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6848C2722F04DA4000DA4B7 /* main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
+		C6848C6D22F0B021000DA4B7 /* Activity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Activity-Bridging-Header.h"; sourceTree = "<group>"; };
+		C6848C6E22F0B022000DA4B7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E9801069224A7479004F93F3 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		E9A1465C224E2701001AB682 /* EventEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventEmitter.m; path = Activity/EventEmitter.m; sourceTree = "<group>"; };
 		E9A1465D224E2702001AB682 /* EventEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventEmitter.h; path = Activity/EventEmitter.h; sourceTree = "<group>"; };
@@ -385,7 +388,6 @@
 				0E552645F7D2E538A6BB7451 /* Pods-Activity.debug.xcconfig */,
 				AE229BF8CCC980EEE5F560FB /* Pods-Activity.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -427,6 +429,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				C6848C2722F04DA4000DA4B7 /* main.storyboard */,
+				C6848C6E22F0B022000DA4B7 /* MainViewController.swift */,
+				C6848C6D22F0B021000DA4B7 /* Activity-Bridging-Header.h */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -560,6 +564,11 @@
 			attributes = {
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Facebook;
+				TargetAttributes = {
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1030;
+					};
+				};
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Activity" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -962,6 +971,7 @@
 				E9A14668224E2702001AB682 /* main.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				E9A14664224E2702001AB682 /* EventEmitter.m in Sources */,
+				C6848C6F22F0B022000DA4B7 /* MainViewController.swift in Sources */,
 				E9A14666224E2702001AB682 /* ActivityStarterModule.m in Sources */,
 				E9A14665224E2702001AB682 /* ExampleView.m in Sources */,
 			);
@@ -987,6 +997,7 @@
 			baseConfigurationReference = 0E552645F7D2E538A6BB7451 /* Pods-Activity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = Activity/Info.plist;
@@ -998,6 +1009,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Activity;
+				SWIFT_OBJC_BRIDGING_HEADER = "Activity-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1007,6 +1021,7 @@
 			baseConfigurationReference = AE229BF8CCC980EEE5F560FB /* Pods-Activity.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = Activity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1017,6 +1032,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Activity;
+				SWIFT_OBJC_BRIDGING_HEADER = "Activity-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
