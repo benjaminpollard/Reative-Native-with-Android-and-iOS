@@ -10,12 +10,12 @@
         "start": "node node_modules/react-native/local-cli/cli.js start"
     },
     "dependencies": {
-        "react": "^16.8.6",
-        "react-native": "^0.59.9"
+        "react": "16.8.6",
+        "react-native": "0.59.9"
     },
     "devDependencies": {
         "babel-loader": "8.0.6",
         "babel-plugin-transform-runtime": "6.23.0",
-        "metro-react-native-babel-preset": "^0.54.1"
+        "metro-react-native-babel-preset": "0.51.0"
     }
 }
