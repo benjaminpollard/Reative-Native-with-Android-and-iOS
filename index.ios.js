@@ -64,7 +64,7 @@ export default class ActivityDemoComponent extends Component {
             <Text style={styles.button}>no</Text>
       </TouchableHighlight>
       <TouchableHighlight onPress={() => activityStarter.navigateToExample()} underlayColor="white" style={{width:Dimensions.get('window').width, height:"25%"}}>
-            <Text style={styles.button,backgroundColor: '#2196F3'}>no</Text>
+            <Text style={styles.button}>no</Text>
       </TouchableHighlight>
       <TouchableHighlight onPress={() => activityStarter.navigateToExample()} underlayColor="white" style={{width:Dimensions.get('window').width, height:"25%"}}>
             <Text style={styles.button}>no</Text>
