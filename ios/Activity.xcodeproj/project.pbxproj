@@ -24,6 +24,7 @@
 		C61C809B327406771FCEF379 /* Pods_Activity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B35D98A1FBEE8E4CA6B2FC83 /* Pods_Activity.framework */; };
 		C6848C2822F04DA4000DA4B7 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6848C2722F04DA4000DA4B7 /* main.storyboard */; };
 		C6848C6F22F0B022000DA4B7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6848C6E22F0B022000DA4B7 /* MainViewController.swift */; };
+		C6848C9722F19927000DA4B7 /* ShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6848C9622F19927000DA4B7 /* ShowcaseViewController.swift */; };
 		E980106A224A7479004F93F3 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9801069224A7479004F93F3 /* JavaScriptCore.framework */; };
 		E9A14664224E2702001AB682 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A1465C224E2701001AB682 /* EventEmitter.m */; };
 		E9A14665224E2702001AB682 /* ExampleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A1465E224E2702001AB682 /* ExampleView.m */; };
@@ -305,6 +306,7 @@
 		C6848C2722F04DA4000DA4B7 /* main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
 		C6848C6D22F0B021000DA4B7 /* Activity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Activity-Bridging-Header.h"; sourceTree = "<group>"; };
 		C6848C6E22F0B022000DA4B7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C6848C9622F19927000DA4B7 /* ShowcaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController.swift; sourceTree = "<group>"; };
 		E9801069224A7479004F93F3 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		E9A1465C224E2701001AB682 /* EventEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventEmitter.m; path = Activity/EventEmitter.m; sourceTree = "<group>"; };
 		E9A1465D224E2702001AB682 /* EventEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventEmitter.h; path = Activity/EventEmitter.h; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				C6848C2722F04DA4000DA4B7 /* main.storyboard */,
 				C6848C6E22F0B022000DA4B7 /* MainViewController.swift */,
 				C6848C6D22F0B021000DA4B7 /* Activity-Bridging-Header.h */,
+				C6848C9622F19927000DA4B7 /* ShowcaseViewController.swift */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -971,6 +974,7 @@
 				E9A14668224E2702001AB682 /* main.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				E9A14664224E2702001AB682 /* EventEmitter.m in Sources */,
+				C6848C9722F19927000DA4B7 /* ShowcaseViewController.swift in Sources */,
 				C6848C6F22F0B022000DA4B7 /* MainViewController.swift in Sources */,
 				E9A14666224E2702001AB682 /* ActivityStarterModule.m in Sources */,
 				E9A14665224E2702001AB682 /* ExampleView.m in Sources */,
@@ -1089,6 +1093,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1135,6 +1140,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

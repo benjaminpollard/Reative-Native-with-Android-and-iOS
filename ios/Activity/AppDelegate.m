@@ -15,7 +15,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //self.reactBridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
+    self.reactBridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
 
 //    RCTDevMenuItem *devMenuItem = [RCTDevMenuItem buttonItemWithTitle:@"Custom menu item"
 //                                                              handler:^{
@@ -23,14 +23,13 @@
 //                                                              }];
 //    [self.reactBridge.devMenu addItem:devMenuItem];
 
-//    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:self.reactBridge
-//                                                     moduleName:@"ActivityDemoComponent"
-//                                              initialProperties:nil];
-//    rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
-//
-//    UIViewController *rootViewController = [UIViewController new];
-//    rootViewController.view = rootView;
-//    navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:self.reactBridge
+                                                     moduleName:@"ActivityDemoComponent"                                             initialProperties:nil];
+    rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+
+    UIViewController *rootViewController = [UIViewController new];
+    rootViewController.view = rootView;
+  // navigationController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
 //
 //    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 //    self.window.rootViewController = navigationController;

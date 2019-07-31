@@ -9,7 +9,13 @@
 import Foundation
 import UIKit
 class MainViewController: UIViewController {
-  override func viewWillAppear(_ animated: Bool) {
+    @IBOutlet weak var Login: UIButton!
+    @IBOutlet weak var signUp: UIButton!
+    override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+        
   }
+    @IBAction func touch(_ sender: Any) {
+        
+    }
 }
