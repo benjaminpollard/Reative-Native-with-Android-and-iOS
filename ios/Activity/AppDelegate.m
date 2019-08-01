@@ -43,10 +43,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"RecipeListStoryboard" bundle:nil];
     UIViewController *myViewController = [storyboard instantiateViewControllerWithIdentifier:@"RecipeListViewController"];
-    //[myViewController loadCustomData:myCustomData];
-   // [self presentViewController:myViewController animated:YES completion:nil];
-//    ExampleView *viewController = [[ExampleView alloc] initWithNibName:@"ExampleView" bundle:nil];
-    [navigationController pushViewController:myViewController animated:YES];
+    self.window.rootViewController = myViewController;
 }
 
 - (void) navigateBack
