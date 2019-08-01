@@ -426,29 +426,14 @@
 		13B07FAE1A68108700A75B9A /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				C6848D8C22F33C36000DA4B7 /* Misc */,
+				C6848D6622F33BE0000DA4B7 /* Views */,
 				C6848CD322F302BD000DA4B7 /* Models */,
-				E9A14660224E2702001AB682 /* ActivityStarterModule.h */,
-				E9A14661224E2702001AB682 /* ActivityStarterModule.m */,
-				E9A1465D224E2702001AB682 /* EventEmitter.h */,
-				E9A1465C224E2701001AB682 /* EventEmitter.m */,
-				E9A1465F224E2702001AB682 /* ExampleView.h */,
-				E9A1465E224E2702001AB682 /* ExampleView.m */,
-				E9A14662224E2702001AB682 /* ExampleView.xib */,
-				E9A14663224E2702001AB682 /* main.m */,
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
-				C6848C2722F04DA4000DA4B7 /* main.storyboard */,
-				C6848C6E22F0B022000DA4B7 /* MainViewController.swift */,
-				C6848C6D22F0B021000DA4B7 /* Activity-Bridging-Header.h */,
-				C6848C9622F19927000DA4B7 /* ShowcaseViewController.swift */,
-				C6848C9822F1E6D5000DA4B7 /* RecipeListStoryboard.storyboard */,
-				C6848C9A22F1E7CA000DA4B7 /* RecipeListViewController.swift */,
-				C6848D0422F31C52000DA4B7 /* RecipeCell.swift */,
-				C6848D3422F329E8000DA4B7 /* RecipesDetailsViewController.swift */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -548,6 +533,53 @@
 				C6848CF722F302D6000DA4B7 /* Recipe.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		C6848D6622F33BE0000DA4B7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C6848D8D22F33C73000DA4B7 /* Cells */,
+				C6848C2722F04DA4000DA4B7 /* main.storyboard */,
+				C6848C6E22F0B022000DA4B7 /* MainViewController.swift */,
+				C6848C6D22F0B021000DA4B7 /* Activity-Bridging-Header.h */,
+				C6848C9622F19927000DA4B7 /* ShowcaseViewController.swift */,
+				C6848C9822F1E6D5000DA4B7 /* RecipeListStoryboard.storyboard */,
+				C6848C9A22F1E7CA000DA4B7 /* RecipeListViewController.swift */,
+				C6848D3422F329E8000DA4B7 /* RecipesDetailsViewController.swift */,
+				C6848D8B22F33C0E000DA4B7 /* ReactMods */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		C6848D8B22F33C0E000DA4B7 /* ReactMods */ = {
+			isa = PBXGroup;
+			children = (
+				E9A14660224E2702001AB682 /* ActivityStarterModule.h */,
+				E9A14661224E2702001AB682 /* ActivityStarterModule.m */,
+				E9A1465D224E2702001AB682 /* EventEmitter.h */,
+				E9A1465C224E2701001AB682 /* EventEmitter.m */,
+				E9A1465F224E2702001AB682 /* ExampleView.h */,
+			);
+			name = ReactMods;
+			sourceTree = "<group>";
+		};
+		C6848D8C22F33C36000DA4B7 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				E9A1465E224E2702001AB682 /* ExampleView.m */,
+				E9A14662224E2702001AB682 /* ExampleView.xib */,
+				E9A14663224E2702001AB682 /* main.m */,
+				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
+		C6848D8D22F33C73000DA4B7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C6848D0422F31C52000DA4B7 /* RecipeCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		E980102D224A7479004F93F3 /* Frameworks */ = {

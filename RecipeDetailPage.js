@@ -35,7 +35,7 @@ export default class RecipeDetailPage extends Component {
 render() {
   if(this.state.data)
   {
-    return (<ScrollView><Image source={{uri: this.state.data.recipe.image_url,width: 100,height: 100}} style={ styles.headerImage }></Image><Text style={{fontSize:14}}>{stringListToText(this.state.data.recipe.ingredients)}</Text></ScrollView>);
+    return (<ScrollView><Image source={{uri: this.state.data.recipe.image_url.replace("http", "https"),width: 100,height: 100}} style={ styles.headerImage }></Image><Text style={{fontSize:14}}>{stringListToText(this.state.data.recipe.ingredients)}</Text></ScrollView>);
   }
   else
   {
