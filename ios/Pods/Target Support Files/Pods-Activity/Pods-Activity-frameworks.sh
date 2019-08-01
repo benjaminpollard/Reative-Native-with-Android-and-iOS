@@ -161,17 +161,21 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DoubleConversion/DoubleConversion.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Folly/folly.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/React/React.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/glog/glog.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/moa/moa.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/yoga/yoga.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DoubleConversion/DoubleConversion.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Folly/folly.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/React/React.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/glog/glog.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/moa/moa.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/yoga/yoga.framework"

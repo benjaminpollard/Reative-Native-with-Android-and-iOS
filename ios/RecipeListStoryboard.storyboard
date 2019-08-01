@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="cKz-2S-MYg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipe" rowHeight="70" id="cKz-2S-MYg" customClass="RecipeCell" customModule="Activity" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cKz-2S-MYg" id="Dkv-aE-BeE">
@@ -48,6 +49,10 @@
                                         <constraint firstItem="pVG-td-dFR" firstAttribute="top" secondItem="Dkv-aE-BeE" secondAttribute="top" id="sze-Ta-czY"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bg" destination="pVG-td-dFR" id="M8h-15-nWZ"/>
+                                    <outlet property="name" destination="Dhi-lL-pJb" id="2so-Zo-iUx"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -55,10 +60,28 @@
                             <outlet property="delegate" destination="Goo-Oh-GL7" id="bAr-Zz-E5e"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Aku-t3-pam" kind="showDetail" identifier="toDetail" id="6H7-sc-fhJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbE-XG-Woa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="174" y="92"/>
+        </scene>
+        <!--Recipes Details View Controller-->
+        <scene sceneID="H7h-lR-EtA">
+            <objects>
+                <viewController id="Aku-t3-pam" customClass="RecipesDetailsViewController" customModule="Activity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nle-fP-eiG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2J3-ZV-IHJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VuK-X8-AWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1005" y="92"/>
         </scene>
     </scenes>
 </document>
