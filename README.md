@@ -66,76 +66,173 @@ The `TextInput` box appears only in the Android version. Since both platforms us
 The gist of the JavaScript code looks like this:
 
 ```javascript
-import { ..., NativeModules, ... } from 'react-native';
+import settingsPage from './settingsPage';
+ import RecipeDetailPage from './RecipeDetailPage';
 
-export default class ActivityDemoComponent extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <!-- Menu buttons: https://facebook.github.io/react-native/docs/debugging -->
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={() => NativeModules.ActivityStarter.navigateToExample()}
-            title='Start example activity'
-          />
-          <Button
-            onPress={() => NativeModules.ActivityStarter.dialNumber('+1 (234) 567-8910')}
-            title='Dial +1 (234) 567-8910'
-          />
-          <Button
-            onPress={() => NativeModules.ActivityStarter.getName((name) => { alert(name); })}
-            title='Get activity name'
-          />
-          <Button
-            onPress={() => NativeModules.Clipboard.setString("Hello from JavaScript!")}
-            title='Copy to clipboard'
-          />
-        </View>
-      </View>
-    );
-  }
-}
+ import React, { Component } from 'react';
+
+ import {
+   AppRegistry,
+   Button,
+   NativeEventEmitter,
+   NativeModules,
+   Platform,
+   StyleSheet,
+   Text,
+   Dimensions,
+   TextInput,
+   SafeAreaView,
+   TouchableHighlight,
+   View,
+ } from 'react-native';
+
+ import BatchedBridge from "react-native/Libraries/BatchedBridge/BatchedBridge";
+
+ export class ExposedToJava {
+   extraMessage = "Be aware that this way of calling JavaScript is officially undocumented.\n\nIf possible, use events instead!";
+
+   setMessage(message) {
+     this.extraMessage = message;
+   }
+
+   /**
+    * If this is called from an activity that doesn't forward Android life-cycle events
+    * to React Native, the alert will appear to do nothing.
+    */
+   alert(message) {
+       alert(message + "\n\n" + this.extraMessage);
+   }
+ }
+
+ const exposedToJava = new ExposedToJava();
+ BatchedBridge.registerCallableModule("JavaScriptVisibleToJava", exposedToJava);
+
+ const activityStarter = NativeModules.ActivityStarter;
+ const eventEmitterModule = NativeModules.EventEmitter;
+
+ export default class ActivityDemoComponent extends Component {
+   constructor(props) {
+     super(props);
+     this.state = { text: 'Demo text for custom edit menu' };
+   }
+
+   render() {
+     return (
+       <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+
+       <View style={styles.container} >
+       <View style={{
+         flex: 1,
+         flexDirection: 'column',
+         justifyContent: 'center',
+         alignItems: 'stretch',
+       }}>
+       <TouchableHighlight onPress={() => activityStarter.navigateToExample()} underlayColor="white" style={{width:Dimensions.get('window').width, height:"25%"}}>
+             <Text style={styles.button}>no</Text>
+       </TouchableHighlight>
+       <TouchableHighlight onPress={() => activityStarter.navigateToExample()} underlayColor="white" style={{width:Dimensions.get('window').width, height:"25%"}}>
+             <Text style={styles.button}>no</Text>
+       </TouchableHighlight>
+       <TouchableHighlight onPress={() => activityStarter.navigateToExample()} underlayColor="white" style={{width:Dimensions.get('window').width, height:"25%"}}>
+             <Text style={styles.button}>no</Text>
+       </TouchableHighlight>
+       <TouchableHighlight onPress={() => activityStarter.navigateToExample()} underlayColor="white" style={{width:Dimensions.get('window').width, height:"25%"}}>
+             <Text style={styles.button}>no</Text>
+       </TouchableHighlight>
+       </View>
+
+
+       </View>
+       </SafeAreaView>
+
+     );
+   }
+ }
+
+ const styles = StyleSheet.create({
+   bold: {
+     fontWeight: "bold",
+   },
+   x: {
+     width: "100%",
+   },
+   button: {
+       width: "100%",
+       height:"100%",
+       backgroundColor: '#C72727',
+       alignItems: 'center',
+       justifyContent: 'center'
+     },
+   container: {
+     flex: 1,
+     justifyContent: 'center',
+     alignItems: 'center',
+     backgroundColor: '#E5ECFF',
+     width: "100%",
+   },
+
+ });
+
+ AppRegistry.registerComponent('ActivityDemoComponent', () => ActivityDemoComponent);
+ AppRegistry.registerComponent('ActivityDemoComponent2', () => settingsPage);
+ AppRegistry.registerComponent('RecipeDetailPage', () => RecipeDetailPage);
+
+
+ const eventEmitter = new NativeEventEmitter(eventEmitterModule);
+ eventEmitter.addListener(eventEmitterModule.MyEventName, (params) => {
+   exposedToJava.setMessage(params);
+   alert(params);
+ });
+
 ```
 
-The first three buttons use three methods on `NativeModules.ActivityStarter`. Where does this come from?
+The buttons use methods on `NativeModules.ActivityStarter`. Where does this come from?
 
 ## Android: The Java module
 
 `ActivityStarter` is just a Java class that implements a React Native Java interface called `NativeModule`. The heavy lifting of this interface is already done by `BaseJavaModule`, so one normally extends either that one or `ReactContextBaseJavaModule`:
 
 ```java
-class ActivityStarterModule extends ReactContextBaseJavaModule {
+final public class ActivityStarterModule extends ReactContextBaseJavaModule {
 
     ActivityStarterModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
 
+    /**
+     * @return the name of this module. This will be the name used to {@code require()} this module
+     * from JavaScript.
+     */
     @Override
     public String getName() {
         return "ActivityStarter";
     }
 
     @ReactMethod
+    void navigateToDashboard() {
+        Activity activity = getCurrentActivity();
+        if (activity != null) {
+            Intent intent = new Intent(activity, RecipeListActivity.class);
+            activity.startActivity(intent);
+        }
+    }
+
+    @ReactMethod
     void navigateToExample() {
-        ReactApplicationContext context = getReactApplicationContext();
-        Intent intent = new Intent(context, ExampleActivity.class);
-        context.startActivity(intent);
+        Activity activity = getCurrentActivity();
+        if (activity != null) {
+            Intent intent = new Intent(activity, RecipeListActivity.class);
+            activity.startActivity(intent);
+        }
     }
 
     @ReactMethod
     void dialNumber(@NonNull String number) {
-        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
-        getReactApplicationContext().startActivity(intent);
+        Activity activity = getCurrentActivity();
+        if (activity != null) {
+            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
+            activity.startActivity(intent);
+        }
     }
 
     @ReactMethod
@@ -143,6 +240,41 @@ class ActivityStarterModule extends ReactContextBaseJavaModule {
         Activity activity = getCurrentActivity();
         if (activity != null) {
             callback.invoke(activity.getClass().getSimpleName());
+        } else {
+            callback.invoke("No current activity");
+        }
+    }
+
+    @ReactMethod
+    void getActivityNameAsPromise(@NonNull Promise promise) {
+        Activity activity = getCurrentActivity();
+        if (activity != null) {
+            promise.resolve(activity.getClass().getSimpleName());
+        } else {
+            promise.reject("NO_ACTIVITY", "No current activity");
+        }
+    }
+
+    @ReactMethod
+    void callJavaScript() {
+        Activity activity = getCurrentActivity();
+        if (activity != null) {
+            MainApplication application = (MainApplication) activity.getApplication();
+            ReactNativeHost reactNativeHost = application.getReactNativeHost();
+            ReactInstanceManager reactInstanceManager = reactNativeHost.getReactInstanceManager();
+            ReactContext reactContext = reactInstanceManager.getCurrentReactContext();
+
+            if (reactContext != null) {
+                CatalystInstance catalystInstance = reactContext.getCatalystInstance();
+                WritableNativeArray params = new WritableNativeArray();
+                params.pushString("Hello, JavaScript!");
+
+                // AFAIK, this approach to communicate from Java to JavaScript is officially undocumented.
+                // Use at own risk; prefer events.
+                // Note: Here we call 'alert', which shows UI. If this is done from an activity that
+                // doesn't forward lifecycle events to React Native, it wouldn't work.
+                catalystInstance.callFunction("JavaScriptVisibleToJava", "alert", params);
+            }
         }
     }
 }
@@ -204,7 +336,7 @@ public class MainApplication extends Application implements ReactApplication {
         @Override
         protected List<ReactPackage> getPackages() {
             return Arrays.<ReactPackage>asList(
-                    new ActivityStarterReactPackage(), // This is it!
+                    new ActivityStarterReactPackage(),
                     new MainReactPackage()
             );
         }
@@ -322,14 +454,6 @@ This requires the react native bridge, so responsibility resides with the `AppDe
                        completion:nil];
 }
 ```
-
-## Addendum
-
-I just added a second version of `ActivityStarterModule.getActivityName` called `getActivityNameAsPromise`, with a corresponding button.
-
-## Addendum 2
-
-[I added a sample of event triggering, another way to communicate](https://github.com/petterh/react-native-android-activity/commit/e63706e2ca828d4de4db1bf7cf85fe5be28d648d). Tap **Start Example Activity**, then **Trigger event**.
 
 ## Further reading
 
