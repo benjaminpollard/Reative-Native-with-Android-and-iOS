@@ -1,16 +1,12 @@
 # React Native Activity Demo
 
-This sample, which grew out of a [question on Stack Overflow](https://stackoverflow.com/questions/42253397/call-android-activity-from-react-native-code/43675819), demonstrates the interface between React Native JavaScript and Java code in host applications.
-
-The original version was Android-only; support for iOS was added March 28 2019.
-
 This project demonstrates the following:
 
 * Call from JavaScript into native modules:
   * These use a custom native module called `ActivityStarter`:
     * Navigate from React Native to a Java activity (or iOS view controller) internal to the host app;
-    * Start an external intent to dial a phone number, passing data from JavaScript;
     * Query the host app for information.
+    * Navigate from Java to React Native
   * This uses the native module `Clipboard`, which [comes with React Native out of the box](https://github.com/facebook/react-native/blob/master/ReactAndroid/src/main/java/com/facebook/react/modules/clipboard/ClipboardModule.java):
     * Copy information to the clipboard.
 * Call a JavaScript method from Java or Objective-C, using an officially undocumented approach.
