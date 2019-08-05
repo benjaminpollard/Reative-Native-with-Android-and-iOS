@@ -399,6 +399,85 @@ const exposedToJava = new ExposedToJava();
 BatchedBridge.registerCallableModule("JavaScriptVisibleToJava", exposedToJava);
 ```
 
+## Android: Navagating from Android To react Native
+
+Start this Activity in the normal way , with a startActivity , with an intent, aswell as showing how we pass data from intent extra to javascript
+
+```java
+import android.os.Bundle;
+import com.facebook.react.ReactActivity;
+import com.facebook.react.ReactActivityDelegate;
+
+public class RecipesDetailsActivity extends ReactActivity {
+    public static final String KEY = "key1";
+    private Bundle mInitialProps = null;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Bundle bundle = this.getIntent().getExtras();
+        if (bundle != null && bundle.containsKey(KEY)) {
+            mInitialProps = new Bundle();
+            mInitialProps.putString(KEY, bundle.getString(KEY));
+        }
+        super.onCreate(savedInstanceState);
+    }
+
+    /**
+     * Returns the name of the main component registered from JavaScript.
+     * This is used to schedule rendering of the component.
+     * Because this class overrides {@link #createReactActivityDelegate()}, we don't really need
+     * to override this.
+     */
+    @Override
+    protected String getMainComponentName() {
+        return "RecipeDetailPage";
+    }
+
+    /**
+     * We override to provide launch options that we can read in JavaScript (see buildType).
+     */
+    @Override
+    protected ReactActivityDelegate createReactActivityDelegate() {
+        return new ReactActivityDelegate(this, getMainComponentName()) {
+            @Override
+            protected Bundle getLaunchOptions() {
+                Bundle launchOptions = new Bundle();
+                launchOptions.putString("buildType", BuildConfig.BUILD_TYPE);
+                launchOptions.putString(KEY, getIntent().getStringExtra(KEY));
+                return launchOptions;
+            }
+        };
+    }
+}
+```
+## iOS: Navagating from iOS To react Native
+This can be start with the normal way thought segways in storayboards linked to backing viewcontrollers
+or thought just making a viewcontroller and pushing ont he nav controller
+
+```swift
+import Foundation
+import React
+class RecipesDetailsViewController: UIViewController {
+  var detail: RCTRootView!
+  var id = "";
+  override func viewDidLoad() {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+    detail = RCTRootView(bridge: appDelegate.reactBridge, moduleName: "RecipeDetailPage", initialProperties: ["key1":id])
+
+    self.view.addSubview(detail)
+    
+    
+  }
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    detail.frame = self.view.bounds
+    
+  }
+}
+
+```
+
 ## Android: Summary
 
 1. The main application class initializes React Native and creates a `ReactNativeHost` whose `getPackages` include our package in its list.
