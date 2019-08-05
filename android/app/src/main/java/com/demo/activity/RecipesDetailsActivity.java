@@ -1,19 +1,9 @@
 package com.demo.activity;
 
-import android.support.annotation.CallSuper;
-import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.Toast;
 
+import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
-import com.facebook.react.ReactInstanceManager;
-import com.facebook.react.ReactNativeHost;
-import com.facebook.react.devsupport.interfaces.DevOptionHandler;
-import com.facebook.react.devsupport.interfaces.DevSupportManager;
 
 public class RecipesDetailsActivity extends ReactActivity {
     public static final String KEY = "key1";
@@ -55,6 +45,4 @@ public class RecipesDetailsActivity extends ReactActivity {
             }
         };
     }
-
-
 }
