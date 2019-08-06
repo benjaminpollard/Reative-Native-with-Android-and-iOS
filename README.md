@@ -55,6 +55,11 @@ The `TextInput` box appears only in the Android version. Since both platforms us
 
 <!-- markdownlint-enable MD031 -->
 
+### JavaScript
+
+TODO
+
+
 ## The React Native side
 
 The gist of the JavaScript code looks like this:
