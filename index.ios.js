@@ -2,7 +2,6 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
- import settingsPage from './settingsPage';
  import RecipeDetailPage from './RecipeDetailPage';
 
  import React, { Component } from 'react';
@@ -46,7 +45,7 @@
  const activityStarter = NativeModules.ActivityStarter;
  const eventEmitterModule = NativeModules.EventEmitter;
 
- export default class ActivityDemoComponent extends Component {
+ export default class Dashboard extends Component {
    constructor(props) {
      super(props);
      this.state = { text: 'Demo text for custom edit menu' };
@@ -109,8 +108,7 @@
 
  });
 
- AppRegistry.registerComponent('ActivityDemoComponent', () => ActivityDemoComponent);
- AppRegistry.registerComponent('ActivityDemoComponent2', () => settingsPage);
+ AppRegistry.registerComponent('ActivityDemoComponent', () => Dashboard);
  AppRegistry.registerComponent('RecipeDetailPage', () => RecipeDetailPage);
 
 
