@@ -57,7 +57,11 @@ The `TextInput` box appears only in the Android version. Since both platforms us
 
 ### JavaScript
 
-TODO
+* Install [Atom](https://atom.io/)
+* Install In Atom : liniter-eslint
+* Install In Atom : prettier-ataom
+* Install In Atom : atom-react-autocomplete
+* Install In Atom : atom-react-native-style
 
 
 ## The React Native side
