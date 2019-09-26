@@ -28,7 +28,7 @@ The `TextInput` box appears only in the Android version. Since both platforms us
 * Install [Node.js](https://nodejs.org/en/download/).
 * Install [Yarn](https://yarnpkg.com/lang/en/docs/install/#windows-stable). Use a shell with Git, Node and Yarn in the path for all commands.
 * Clone this project:\
-  `git clone https://github.com/petterh/react-native-android-activity.git`\
+  `git clone https://github.com/benjaminpollard/Reative-Native-with-Android-and-iOS.git`\
   (Alternatively, create your own fork and clone that instead.)
 * `cd react-native-android-activity`
 * Run `yarn` to download dependencies
