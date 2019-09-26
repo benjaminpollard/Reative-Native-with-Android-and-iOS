@@ -4,5 +4,6 @@
 
 
 #import "AppDelegate.h"
+#import "RCTBridgeModule.h"
 
 
