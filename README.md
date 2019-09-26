@@ -38,6 +38,8 @@ The `TextInput` box appears only in the Android version. Since both platforms us
   ```cmd
   yarn start
   ```
+* [Npm](https://www.npmjs.com/) can be used instead of Yarn in the same way
+
 
 ### Android
 
